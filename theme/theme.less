@@ -1,14 +1,21 @@
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 // -----------------------------------
 // Variables for user customisation
 // -----------------------------------
 
 @body-background: #fff;
-@header-background: #fff;
+@background-black: #333;
 @header-foreground: #444;
+@color--red: #ed2024;
 @text-color: #444;
 @borders: #ddd;
-@mobile-trigger: 400px;
+@small: 600px;
+@medium: 840px;
+@large: 1440px;
+@medium-large: 1280px;
+@extra-large: 1920px;
+@huge: 2880px;
+@extra-huge: 3280px;
 
 // -----------------------------------
 // Generic styles
@@ -21,6 +28,7 @@
 
 html {
   height: 100%;
+  background: @background-black;
 }
 
 html, body {
@@ -29,12 +37,11 @@ html, body {
 }
 
 body {
-  background: @body-background;
   color: @text-color;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: lighter;
-  margin-bottom: 1em;
+  height: 100%;
 }
 
 a {
@@ -57,67 +64,141 @@ a {
   user-select: none;
 }
 
+h1 {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 0.35em;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0.1em;
+}
+
+.center-md {
+  @media (max-width: @large) and (min-width: @small) {
+    text-align: center;
+  }
+}
+
 // -----------------------------------
 // Structure
 // -----------------------------------
-
-#container {
+.container {
   padding: 2em;
+  margin: 66px auto 0;
+  width: 85%;
+  position: relative;
+  background: white;
+  max-width: @extra-huge;
+
+  &__content {
+    background: white;
+  }
 }
 
-// -----------------------------------
-// Header
-// -----------------------------------
-
-header {
-  background: @header-background;
-  color: @header-foreground;
-  font-size: 1.8em;
-  margin-bottom: 1.1em;
-}
-
-h1 {
-  display: inline-block;
-  font-weight: bold;
-}
-
-h1 a {
-  color: @header-foreground;
-}
 
 // -----------------------------------
 // Footer
 // -----------------------------------
 
-footer {
-  color: #666;
+.footer {
+  background: @background-black;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  color: white;
   font-size: 0.9em;
-  font-style: italic;
-  margin-top: 3em;
+  width: 100%;
+  padding: 2em 5% 4em;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 2em;
+  grid-row-gap: 4em;
+
+  grid-template-areas:
+          "logo"
+          "about"
+          "address";
+
+  @media (min-width: @medium) {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-areas:
+            "logo logo"
+            "about address";
+  }
+  @media (min-width: @large) {
+    grid-template-columns: repeat(10, 1fr);
+
+    grid-template-areas:
+            ". . logo logo about about address address . .";
+  }
+
+  a {
+    color: white;
+  }
+
+  &__logo {
+    grid-area: logo;
+    text-align: center;
+
+    img {
+      height: 140px;
+      width: auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__about {
+    grid-area: about;
+  }
+
+  &__address {
+    grid-area: address;
+  }
 }
 
-footer a {
-  color: #17baef;
+#address {
+  @media (min-width: @medium) and (max-width: @large) {
+    margin: 0 auto;
+    width: max-content;
+  }
 }
 
 // -----------------------------------
-// Breadcrumbs navigation
+// Navigation
 // -----------------------------------
 
-nav.breadcrumbs {
-  border-bottom: 1px solid @borders;
-  font-size: 1.2em;
-  margin-bottom: 2em;
-  padding: 0em 0em 0.8em 0.1em;
-}
+nav {
+  width: 100%;
+  background: @background-black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 66px;
 
-nav.breadcrumbs a, nav span {
-  display: inline;
-}
-
-nav.breadcrumbs a {
-  color: @text-color;
-  text-decoration: none;
+  img {
+    max-height: 50px;
+    margin: 5px;
+  }
 }
 
 // -----------------------------------
@@ -125,21 +206,62 @@ nav.breadcrumbs a {
 // -----------------------------------
 
 #albums, #media {
-  margin: 0em;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  width: 100%;
+  position: relative;
+
+  @media (max-width: @small) {
+    justify-content: center;
+
+  }
 }
 
 #albums a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: inline-block;
-  margin-right: 2em;
-  margin-bottom: 3em;
+  margin: 0.5em;
   position: relative;
   overflow: hidden;
-  width: 300px;
-  height: 220px;
+  //width: 360px;
+  //height: 280px;
   background-size: cover;
-  border-radius: 8px;
+  width: 100%;
+  height: 190px;
+
+  @media (min-width: @small) {
+    margin: 2.5%;
+    width: 45%;
+  }
+
+  @media (min-width: @medium) {
+    margin: 2.5%;
+    width: 45%;
+  }
+
+  @media (min-width: @large) {
+    margin: 1.5%;
+    width: 30.3%;
+  }
+
+  @media (min-width: @extra-large) {
+    margin: 1%;
+    width: 23%;
+  }
+
+  @media (min-width: @huge) {
+    margin: 1%;
+    width: 18%;
+  }
+
+  @media (min-width: @extra-huge) {
+    margin: 0.25%;
+    width: 12%;
+  }
 }
 
 #albums .info {
@@ -163,10 +285,10 @@ nav.breadcrumbs a {
 // -----------------------------------
 // Photo and video thumbnails
 // -----------------------------------
-
 #media li {
   float: left;
-  margin-right: 0.4em;
+  margin-right: auto;
+  margin-left: auto;
   margin-bottom: 0.2em;
   position: relative;
   cursor: zoom-in;
@@ -174,11 +296,13 @@ nav.breadcrumbs a {
 
 #media a {
   display: inline-block;
+  width: 100%;
 }
 
 #media img {
-  border-radius: 8px;
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 #media li .video-overlay {
@@ -191,13 +315,82 @@ nav.breadcrumbs a {
   width: 48px;
 }
 
-// -----------------------------------
-// Photo and video thumbnails
-// -----------------------------------
+.thumb {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  object-fit: fill;
 
-@media only screen and (max-width: @mobile-trigger) {
-  #albums a {
-    width: 250px;
-    height: 190px;
+  @media (min-width: @small){
+    margin: 2.5%;
+    width: 45%;
+  }
+
+  @media (min-width: @medium){
+    margin: 1.5%;
+    width: 30.3% ;
+  }
+
+  @media (min-width: @medium-large){
+    margin: 1%;
+    width: 23%;
+  }
+
+  @media (min-width: @large){
+    margin: 1%;
+    width: 18%;
+  }
+
+  @media (min-width: @extra-large){
+    width: 15%;
+    margin: 0.83%
+  }
+
+  @media (min-width: @huge){
+    width: 12%;
+    margin: 0.25%;
+  }
+
+  @media (min-width: @extra-huge){
+    width: 8%;
+    margin: 0.167%;
   }
 }
+
+// -----------------------------------
+// Components
+// -----------------------------------
+.button {
+  background: @header-foreground;
+  padding: 0.75em 1.25em;
+  font-size: 16px;
+  color: white;
+  width: max-content;
+
+  &:active {
+    background: darken(@header-foreground, 10%);
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);
+}
+
+// -----------------------------------
+// Different size screen layouts
+// -----------------------------------
+
+@media (max-width: @small) {
+  #albums a {
+
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .thumb {
+    margin: 2%;
+  }
+}
+
