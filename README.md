@@ -8,5 +8,6 @@ FootloosePhotoTheme
  website output. E.g. `thumbsup --input media --output website --theme-path theme --thumb-size 240`. 
   The thumbsize of 240px gives the best results
     - Optionally: add the `--no-usage-stats` option to prevent sending of user data
-    - WIP Optionally: add the `--watermark footloose-watermark.png --watermark-position SouthEast` option to add the
+    - Optionally: add the `--watermark theme/public/footloose-watermark.png --watermark-position SouthEast
+` option to add the
     Footloose watermark
