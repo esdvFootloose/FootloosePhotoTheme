@@ -5,10 +5,8 @@
 
 @body-background: #fff;
 @background-black: #333;
-@header-foreground: #444;
 @color--red: #ed2024;
 @text-color: #444;
-@borders: #ddd;
 @small: 600px;
 @medium: 840px;
 @large: 1440px;
@@ -97,6 +95,7 @@ h4 {
 // -----------------------------------
 // Structure
 // -----------------------------------
+
 .container {
   padding: 2em;
   margin: 66px auto 0;
@@ -133,10 +132,16 @@ h4 {
   width: 100%;
   height: 66px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
-  align-items: flex-end;
   padding: 0 calc(2.5% + 32px);
+  color: white;
 
+  a {
+    text-decoration: none;
+    color: white;
+  }
 
   img {
     max-height: 50px;
@@ -148,7 +153,24 @@ h4 {
   }
 
   &__menu {
-    float: right;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    & li {
+      text-align: center;
+      margin: 15px auto;
+      padding: 0 8px;
+    }
+  }
+
+
+  &__menu-item {
+    height: 100%;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
   }
 }
 
@@ -304,6 +326,7 @@ h4 {
 // -----------------------------------
 // Photo and video thumbnails
 // -----------------------------------
+
 #media li {
   float: left;
   margin-right: auto;
@@ -380,17 +403,6 @@ h4 {
 // -----------------------------------
 // Components
 // -----------------------------------
-.button {
-  background: @header-foreground;
-  padding: 0.75em 1.25em;
-  font-size: 16px;
-  color: white;
-  width: max-content;
-
-  &:active {
-    background: darken(@header-foreground, 10%);
-  }
-}
 
 .box-shadow {
   box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);

@@ -2,30 +2,24 @@
   Breadcrumbs of parent albums
 -->
 <div class="nav-container">
-<nav class="navigation-bar">
-    <a href="{{relative gallery.home.url}}">
-        <img src="public/footloose_logo.png" alt="{{gallery.title}}">
-    </a>
-        <!--{{#each breadcrumbs~}}-->
-    <!--<a class="breadcrumb-item" href="{{relative url}}">{{title}}</a>&nbsp;/&nbsp;-->
-        <!--{{~/each~}}-->
-    <!--<a class="breadcrumb-item" href="{{relative album.url}}">{{album.title}}</a>-->
-    
-</nav>
+    <nav class="navigation-bar">
+        <a href="{{relative gallery.home.url}}">
+            <img src="public/footloose_logo.png" alt="{{gallery.title}}">
+        </a>
+        <ul class="navigation-bar__menu">
+            {{#if breadcrumbs}}
+                <li>
+                    <a href="{{relative gallery.home.url}}" class="navigation-bar__menu-item">Go back</a>
+                </li>
+            {{/if}}
+        </ul>
+    </nav>
 </div>
 <div class="container__wrapper">
     <div class="container">
         <!--
           Nested albums, if any
         -->
-        {{#if breadcrumbs}}
-            <a href="{{relative gallery.home.url}}">
-                <div class="button">
-                    Back
-                </div>
-            </a>
-        {{/if}}
-
         <div id="albums">
             {{#each album.albums~}}
                 <a href="{{relative url}}" class="box-shadow" style="background-image: url('{{relative previews.0.urls.large}}')">

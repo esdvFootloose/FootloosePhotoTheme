@@ -11,3 +11,5 @@ FootloosePhotoTheme
     - Optionally: add the `--watermark theme/public/footloose-watermark.png --watermark-position SouthEast
 ` option to add the
     Footloose watermark
+    
+For more options visit https://thumbsup.github.io/docs/3-configuration/usage/
