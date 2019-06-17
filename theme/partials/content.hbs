@@ -1,46 +1,48 @@
 <!--
   Breadcrumbs of parent albums
 -->
-<div class="nav-container">
-    <nav class="navigation-bar">
-        <a href="{{relative gallery.home.url}}">
-            <img src="public/footloose_logo.png" alt="{{gallery.title}}">
-        </a>
-        <ul class="navigation-bar__menu">
-            {{#if breadcrumbs}}
-                <li>
-                    <a href="{{relative gallery.home.url}}" class="navigation-bar__menu-item">Go back</a>
-                </li>
-            {{/if}}
-        </ul>
-    </nav>
-</div>
-<div class="container__wrapper">
-    <div class="container">
-        <!--
-          Nested albums, if any
-        -->
-        <div id="albums">
-            {{#each album.albums~}}
-                <a href="{{relative url}}" class="box-shadow" style="background-image: url('{{relative previews.0.urls.large}}')">
-                    <div class="info">
-                        <h3>{{title}}</h3>
-                        <div class="summary">{{summary}}</div>
-                    </div>
-                </a>
+<div id="gallery">
+    <div class="nav-container">
+        <nav class="navigation-bar">
+            <a href="{{relative gallery.home.url}}">
+                <img src="public/footloose_logo.png" alt="{{gallery.title}}">
+            </a>
+            <ul class="navigation-bar__menu">
+                {{#if breadcrumbs}}
+                    <li>
+                        <a href="{{relative gallery.home.url}}" class="navigation-bar__menu-item">Go back</a>
+                    </li>
+                {{/if}}
+            </ul>
+        </nav>
+    </div>
+    <div class="container__wrapper">
+        <div class="container">
+            <!--
+              Nested albums, if any
+            -->
+            <div id="albums">
+                {{#each album.albums~}}
+                    <a href="{{relative url}}" class="box-shadow"
+                       style="background-image: url('{{relative previews.0.urls.large}}')">
+                        <div class="info">
+                            <h3>{{title}}</h3>
+                            <div class="summary">{{summary}}</div>
+                        </div>
+                    </a>
+                {{~/each}}
+            </div>
+            <!--
+              All photos and videos
+            -->
+        <div id="media">
+            {{#each album.files~}}
+                <div class="thumb box-shadow"
+                {{> thumbnail}}
+            </div>
             {{~/each}}
         </div>
-        <!--
-          All photos and videos
-        -->
-    <div id="media">
-        {{#each album.files~}}
-            <div class="thumb box-shadow"
-            {{> thumbnail}}
-        </div>
-        {{~/each}}
     </div>
-</div>
 </div>
 <div class="footer">
     <div class="footer__logo">
@@ -48,9 +50,11 @@
     </div>
     <div class="footer__about">
         <h2 class="center-sm-md">About Footloose</h2>
-        <p>Footloose is the student dance association in Eindhoven. We offer dance courses in Ballet, Hiphop, Modern Jazz, Salsa, Zouk, Kizomba and Ballroom.</p>
-        <br />
-        <p>In addition to the courses we also regularly organize (themed) dance evenings, social evenings, and other member activities.</p>
+        <p>Footloose is the student dance association in Eindhoven. We offer dance courses in Ballet, Hiphop, Modern
+            Jazz, Salsa, Zouk, Kizomba and Ballroom.</p>
+        <br/>
+        <p>In addition to the courses we also regularly organize (themed) dance evenings, social evenings, and other
+            member activities.</p>
     </div>
     <div class="footer__address">
         <div id="address">
@@ -58,11 +62,11 @@
             <p>E.S.D.V. Footloose</p>
             <p>De Lampendriessen 31</p>
             <p>5612AH Eindhoven</p>
-            <br />
+            <br/>
             <p><a href="mailto:info@esdvfootloose.nl">info@esdvfootloose.nl</a></p>
-            <br />
+            <br/>
             <p><a href="https://www.esdvfootloose.nl">esdvfootloose.nl</a></p>
         </div>
     </div>
 </div>
-
+</div>

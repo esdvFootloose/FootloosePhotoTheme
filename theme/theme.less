@@ -110,7 +110,18 @@ h4 {
 
   &__wrapper {
     background: white;
+    grid-area: photos;
   }
+}
+
+#gallery {
+  display: grid;
+  grid-template-areas:
+          'navigation-bar'
+          'photos'
+          'footer';
+  grid-template-rows: auto auto 1fr;
+  min-height: 100vh;
 }
 
 // -----------------------------------
@@ -120,11 +131,12 @@ h4 {
 .nav-container {
   width: 100%;
   background: @background-black;
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: center;
   top: 0;
   left: 0;
+  grid-area: navigation-bar;
   z-index: 1;
 }
 
@@ -180,13 +192,17 @@ h4 {
 
 .footer {
   background: @background-black;
+  align-self: end;
   position: relative;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   color: white;
   font-size: 0.9em;
   width: 100%;
   padding: 2em 5% 4em;
+  //height: max-content;
+  overflow: hidden;
+  grid-area: footer;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -200,16 +216,17 @@ h4 {
 
   @media (min-width: @medium) {
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 5%;
 
     grid-template-areas:
             "logo logo"
             "about address";
   }
   @media (min-width: @large) {
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
     grid-template-areas:
-            ". . logo logo about about address address . .";
+            ". logo about address .";
   }
 
   a {
@@ -219,6 +236,7 @@ h4 {
   &__logo {
     grid-area: logo;
     text-align: center;
+    padding: 5%;
 
     img {
       height: 140px;
@@ -231,10 +249,13 @@ h4 {
 
   &__about {
     grid-area: about;
+    padding: 5%;
+
   }
 
   &__address {
     grid-area: address;
+    padding: 5%;
   }
 }
 
